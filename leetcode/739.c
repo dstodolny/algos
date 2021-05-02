@@ -25,17 +25,19 @@ int *daily_temperatures(int *t, int n, int *m);
 int
 *daily_temperatures(int *t, int n, int *m)
 {
-        int *result = (int *)Calloc(n, sizeof(int));
-        for (int i = 0; i < n; i++) {
-                for (int j = i+1, count = 0; j < n; j++, count++) {
-                        if (t[j] > t[i]) {
-                                result[i] = ++count;
-                                break;
-                        }
-                }
+        int *r = (int *)Calloc(n, sizeof(int));
+        int s[n];
+        int slen = 0;
+
+        for (int i = n-1; i >= 0; i--) {
+                while (slen && t[i] >= t[s[slen-1]])
+                        slen--;
+                if (slen)
+                        r[i] = s[slen-1] - i;
+                s[slen++] = i;
         }
         *m = n;
-        return result;
+        return r;
 }
 
 int
