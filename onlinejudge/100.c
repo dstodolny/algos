@@ -8,24 +8,18 @@ int algorithm(int n);
 int
 algorithm(int n)
 {
-        /* printf("%d", n); */
-        if (n == 1) {
-                /* printf("\n"); */
+        if (n == 1)
                 return 1;
-        }
-        else if (n % 2 == 0) {
-                /* printf(" "); */
+        else if (n % 2 == 0)
                 return 1 + algorithm(n / 2);
-        } else {
-                /* printf(" "); */
+        else
                 return 1 + algorithm(3*n + 1);
-        }
 }
 
 int
 main(int argc, char **argv)
 {
-        int i, j, n, count, max_count;
+        int i, j, from, to, count, max_count;
         char line[MAX_LINE];
 
 
@@ -34,9 +28,10 @@ main(int argc, char **argv)
                         break;
                 sscanf(line, "%d %d\n", &i, &j);
                 max_count = 0;
-                n = i;
-                for (n = i; n <= j; n++) {
-                        count = algorithm(n);
+                from = i<j ? i : j;
+                to = i<j ? j : i;
+                for (from = i<j ? i : j; from <= to; from++) {
+                        count = algorithm(from);
                         if (count > max_count)
                                 max_count = count;
                 }
