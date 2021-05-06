@@ -2,7 +2,7 @@
 
 CC = gcc
 CFLAGS = -g -Wall
-FILES = 100 10137
+FILES = 100 10137 10142
 
 all: $(FILES)
 
@@ -11,6 +11,9 @@ all: $(FILES)
 
 10137: 10137.c
 	$(CC) $(CFLAGS) -o 10137 10137.c
+
+10142: 10142.c
+	$(CC) $(CFLAGS) -o 10142 10142.c
 
 clean:
 	rm -f $(FILES) *~ *.o
