@@ -2,8 +2,9 @@
 
 CC = gcc
 CFLAGS = -g -Wall
+FILES = 61 739
 
-all: 739 61
+all: $(FILES)
 
 algos.o: algos.c
 	$(CC) $(CFLAGS) -c algos.c
@@ -15,4 +16,4 @@ algos.o: algos.c
 	$(CC) $(CFLAGS) -o 739 739.c algos.o
 
 clean:
-	rm -f 739 *~ *.o
+	rm -f $(FILES) *~ *.o
